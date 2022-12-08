@@ -25,3 +25,15 @@ h3 {
   font-size: 30px !important;
   text-align: center;
 }
+@media (max-width: 800px) {
+  .sign {
+    background-color: white;
+    padding: 14px 23px;
+    min-height: 27vh;
+    width: 50%;
+    margin-left: auto;
+    border-radius: 10px;
+    margin-right: auto;
+    width: 100%;
+  }
+}

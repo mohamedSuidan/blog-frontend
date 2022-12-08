@@ -109,7 +109,11 @@ function Profile() {
                             : "primary"
                         }
                       >
-                        Follow
+                        {user.followers.includes(
+                          JSON.parse(localStorage.getItem("user")).id
+                        )
+                          ? "unfollow"
+                          : "follow"}
                       </Button>
                     </div>
                   )
