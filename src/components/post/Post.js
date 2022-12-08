@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Alert, Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./post.css";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
@@ -103,50 +103,94 @@ function Post(props) {
   return (
     <>
       <Row>
-        {!loding
-          ? post.map((ele) => {
-              return (
-                <Col lg={limit === 3 ? 4 : 6} key={ele._id}>
-                  <div className="the-card">
-                    <div className="img">
-                      <img
-                        src={`https://blog-api-ufp5.onrender.com/${ele.img}`}
-                      />
-                    </div>
-                    <div className="text">
-                      <div className="category">{ele.category}</div>
-                      <h2 className="title">
-                        <Link to={`/post/${ele._id}`}>{ele.title}</Link>
-                      </h2>
-                      <p className="detales">{ele.detales.slice(0, 120)} ..</p>
-                    </div>
-                    <hr />
-                    <div
-                      className="end"
-                      data-bool={
-                        ele.likes.find((ele) =>
-                          ele.userId === bool
-                            ? JSON.parse(localStorage.getItem("user")).id
-                            : ""
-                        )
-                          ? "true"
-                          : "false"
-                      }
-                      id={ele._id}
-                    >
-                      <div className="end-1">
-                        <div className="auther">
-                          <div className="name">
-                            <Link to={`/profile/${ele.autherId}`}>
-                              {ele.autherName}
-                            </Link>
-                          </div>
+        {!loding ? (
+          post.map((ele) => {
+            return (
+              <Col lg={limit === 3 ? 4 : 6} key={ele._id}>
+                <div className="the-card">
+                  <div className="img">
+                    <img
+                      src={`https://blog-api-ufp5.onrender.com/${ele.img}`}
+                    />
+                  </div>
+                  <div className="text">
+                    <div className="category">{ele.category}</div>
+                    <h2 className="title">
+                      <Link to={`/post/${ele._id}`}>{ele.title}</Link>
+                    </h2>
+                    <p className="detales">{ele.detales.slice(0, 120)} ..</p>
+                  </div>
+                  <hr />
+                  <div
+                    className="end"
+                    data-bool={
+                      ele.likes.find((ele) =>
+                        ele.userId === bool
+                          ? JSON.parse(localStorage.getItem("user")).id
+                          : ""
+                      )
+                        ? "true"
+                        : "false"
+                    }
+                    id={ele._id}
+                  >
+                    <div className="end-1">
+                      <div className="auther">
+                        <div className="name">
+                          <Link to={`/profile/${ele.autherId}`}>
+                            {ele.autherName}
+                          </Link>
                         </div>
                       </div>
-                      {bool ? (
-                        <div
-                          className="end-2"
-                          onClick={like}
+                    </div>
+                    {bool ? (
+                      <div
+                        className="end-2"
+                        onClick={like}
+                        data-bool={
+                          ele.likes.find(
+                            (ele) =>
+                              ele.userId ===
+                              JSON.parse(localStorage.getItem("user")).id
+                          )
+                            ? "true"
+                            : "false"
+                        }
+                        id={ele._id}
+                      >
+                        {ele.likes.find(
+                          (ele) =>
+                            ele.userId ===
+                            JSON.parse(localStorage.getItem("user")).id
+                        ) ? (
+                          <AiFillLike
+                            data-bool={
+                              ele.likes.find(
+                                (ele) =>
+                                  ele.userId ===
+                                  JSON.parse(localStorage.getItem("user")).id
+                              )
+                                ? "true"
+                                : "false"
+                            }
+                            id={ele._id}
+                          />
+                        ) : (
+                          <AiOutlineLike
+                            data-bool={
+                              ele.likes.find(
+                                (ele) =>
+                                  ele.userId ===
+                                  JSON.parse(localStorage.getItem("user")).id
+                              )
+                                ? "true"
+                                : "false"
+                            }
+                            id={ele._id}
+                          />
+                        )}
+                        <p
+                          className="likes"
                           data-bool={
                             ele.likes.find(
                               (ele) =>
@@ -158,62 +202,22 @@ function Post(props) {
                           }
                           id={ele._id}
                         >
-                          {ele.likes.find(
-                            (ele) =>
-                              ele.userId ===
-                              JSON.parse(localStorage.getItem("user")).id
-                          ) ? (
-                            <AiFillLike
-                              data-bool={
-                                ele.likes.find(
-                                  (ele) =>
-                                    ele.userId ===
-                                    JSON.parse(localStorage.getItem("user")).id
-                                )
-                                  ? "true"
-                                  : "false"
-                              }
-                              id={ele._id}
-                            />
-                          ) : (
-                            <AiOutlineLike
-                              data-bool={
-                                ele.likes.find(
-                                  (ele) =>
-                                    ele.userId ===
-                                    JSON.parse(localStorage.getItem("user")).id
-                                )
-                                  ? "true"
-                                  : "false"
-                              }
-                              id={ele._id}
-                            />
-                          )}
-                          <p
-                            className="likes"
-                            data-bool={
-                              ele.likes.find(
-                                (ele) =>
-                                  ele.userId ===
-                                  JSON.parse(localStorage.getItem("user")).id
-                              )
-                                ? "true"
-                                : "false"
-                            }
-                            id={ele._id}
-                          >
-                            {ele.likes.length}
-                          </p>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </div>
+                          {ele.likes.length}
+                        </p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
-                </Col>
-              );
-            })
-          : "good"}
+                </div>
+              </Col>
+            );
+          })
+        ) : (
+          <div className="loding">
+            <Alert variant="primary">loding</Alert>
+          </div>
+        )}
       </Row>
       <Pagination onClick={pagination}>{items}</Pagination>
     </>

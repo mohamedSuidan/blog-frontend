@@ -34,6 +34,7 @@ function Signin() {
   return (
     <Container>
       <h1>Signin</h1>
+      {err !== "" ? <Alert variant="danger">{err}</Alert> : ""}
       {err === "" ? "" : <Alert variant="danger">{err}</Alert>}
       <div className="sign">
         <EmailInput email={getEmail} />
