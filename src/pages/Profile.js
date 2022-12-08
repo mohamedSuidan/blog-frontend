@@ -138,6 +138,7 @@ function Profile() {
                 <Post
                   link={`https://blog-api-ufp5.onrender.com/profile/${id}`}
                   limit={2}
+                  noPagination={true}
                 />
               </Row>
             </Col>

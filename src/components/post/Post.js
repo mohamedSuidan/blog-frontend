@@ -215,7 +215,11 @@ function Post(props) {
           </div>
         )}
       </Row>
-      <Pagination onClick={pagination}>{items}</Pagination>
+      {props.noPagination ? (
+        ""
+      ) : (
+        <Pagination onClick={pagination}>{items}</Pagination>
+      )}
     </>
   );
 }
