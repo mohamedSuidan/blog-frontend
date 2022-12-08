@@ -10,7 +10,7 @@ function Home() {
         <Post
           link="https://blog-api-ufp5.onrender.com/posts"
           limit={3}
-          noPagination={true}
+          noPagination={false}
         />
       </Container>
     </div>
