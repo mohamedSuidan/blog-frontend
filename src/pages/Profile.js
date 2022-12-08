@@ -46,7 +46,7 @@ function Profile() {
       let arr = user.followers.map((ele) => {
         return ele;
       });
-
+      console.log(arr);
       let userStr = JSON.stringify(user);
 
       setUser(JSON.parse(userStr));
