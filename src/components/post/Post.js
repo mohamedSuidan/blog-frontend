@@ -99,67 +99,57 @@ function Post(props) {
   };
   return (
     <>
-      <Row>
-        {!loding ? (
-          post.map((ele) => {
-            return (
-              <Col lg={limit === 3 ? 4 : 6} key={ele._id}>
-                <div className="the-card">
-                  <div className="img">
-                    <img
-                      src={`https://blog-api-ufp5.onrender.com/${ele.img}`}
-                    />
-                  </div>
-                  <div className="text">
-                    <div className="category">{ele.category}</div>
-                    <h2 className="title">
-                      <Link to={`/post/${ele._id}`}>{ele.title}</Link>
-                    </h2>
-                    <p className="detales">{ele.detales.slice(0, 120)} ..</p>
-                  </div>
-                  <hr />
-                  <div
-                    className="end"
-                    data-bool={
-                      ele.likes.find((ele) =>
-                        ele.userId === bool
-                          ? JSON.parse(localStorage.getItem("user")).id
-                          : ""
-                      )
-                        ? "true"
-                        : "false"
-                    }
-                    id={ele._id}
-                  >
-                    <div className="end-1">
-                      <div className="auther">
-                        <div className="name">
-                          <Link to={`/profile/${ele.autherId}`}>
-                            {ele.autherName}
-                          </Link>
-                        </div>
+      {!loding ? (
+        post.length === 0 ? (
+          <Alert variant="danger">Not Found Posts In App</Alert>
+        ) : (
+          <Row>
+            {!loding ? (
+              post.map((ele) => {
+                return (
+                  <Col lg={limit === 3 ? 4 : 6} key={ele._id}>
+                    <div className="the-card">
+                      <div className="img">
+                        <img
+                          src={`https://blog-api-ufp5.onrender.com/${ele.img}`}
+                        />
                       </div>
-                    </div>
-                    {bool ? (
+                      <div className="text">
+                        <div className="category">{ele.category}</div>
+                        <h2 className="title">
+                          <Link to={`/post/${ele._id}`}>{ele.title}</Link>
+                        </h2>
+                        <p className="detales">
+                          {ele.detales.slice(0, 120)} ..
+                        </p>
+                      </div>
+                      <hr />
                       <div
-                        className="end-2"
-                        onClick={like}
+                        className="end"
                         data-bool={
-                          ele.likes.find(
-                            (ele) =>
-                              ele ===
-                              JSON.parse(localStorage.getItem("user")).id
+                          ele.likes.find((ele) =>
+                            ele.userId === bool
+                              ? JSON.parse(localStorage.getItem("user")).id
+                              : ""
                           )
                             ? "true"
                             : "false"
                         }
                         id={ele._id}
                       >
-                        {ele.likes.find(
-                          (ele) =>
-                            ele === JSON.parse(localStorage.getItem("user")).id
-                        ) ? (
-                          <AiFillLike
+                        <div className="end-1">
+                          <div className="auther">
+                            <div className="name">
+                              <Link to={`/profile/${ele.autherId}`}>
+                                {ele.autherName}
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        {bool ? (
+                          <div
+                            className="end-2"
+                            onClick={like}
                             data-bool={
                               ele.likes.find(
                                 (ele) =>
@@ -170,51 +160,75 @@ function Post(props) {
                                 : "false"
                             }
                             id={ele._id}
-                          />
-                        ) : (
-                          <AiOutlineLike
-                            data-bool={
-                              ele.likes.find(
-                                (ele) =>
-                                  ele ===
-                                  JSON.parse(localStorage.getItem("user")).id
-                              )
-                                ? "true"
-                                : "false"
-                            }
-                            id={ele._id}
-                          />
-                        )}
-                        <p
-                          className="likes"
-                          data-bool={
-                            ele.likes.find(
+                          >
+                            {ele.likes.find(
                               (ele) =>
                                 ele ===
                                 JSON.parse(localStorage.getItem("user")).id
-                            )
-                              ? "true"
-                              : "false"
-                          }
-                          id={ele._id}
-                        >
-                          {ele.likes.length}
-                        </p>
+                            ) ? (
+                              <AiFillLike
+                                data-bool={
+                                  ele.likes.find(
+                                    (ele) =>
+                                      ele ===
+                                      JSON.parse(localStorage.getItem("user"))
+                                        .id
+                                  )
+                                    ? "true"
+                                    : "false"
+                                }
+                                id={ele._id}
+                              />
+                            ) : (
+                              <AiOutlineLike
+                                data-bool={
+                                  ele.likes.find(
+                                    (ele) =>
+                                      ele ===
+                                      JSON.parse(localStorage.getItem("user"))
+                                        .id
+                                  )
+                                    ? "true"
+                                    : "false"
+                                }
+                                id={ele._id}
+                              />
+                            )}
+                            <p
+                              className="likes"
+                              data-bool={
+                                ele.likes.find(
+                                  (ele) =>
+                                    ele ===
+                                    JSON.parse(localStorage.getItem("user")).id
+                                )
+                                  ? "true"
+                                  : "false"
+                              }
+                              id={ele._id}
+                            >
+                              {ele.likes.length}
+                            </p>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
-              </Col>
-            );
-          })
-        ) : (
-          <div className="loding">
-            <Alert variant="primary">loding</Alert>
-          </div>
-        )}
-      </Row>
+                    </div>
+                  </Col>
+                );
+              })
+            ) : (
+              <div className="loding">
+                <Alert variant="primary">loding</Alert>
+              </div>
+            )}
+          </Row>
+        )
+      ) : (
+        ""
+      )}
+
       {props.noPagination ? (
         ""
       ) : (
