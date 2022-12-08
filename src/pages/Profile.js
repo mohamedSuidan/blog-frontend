@@ -82,7 +82,7 @@ function Profile() {
                 </div>
                 <div className="follow-detal">
                   <p>
-                    Follower{" "}
+                    Followers{" "}
                     <span className="font-weight-bold">
                       {user.followers.length}
                     </span>

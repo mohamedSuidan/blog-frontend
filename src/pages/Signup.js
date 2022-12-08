@@ -7,6 +7,7 @@ import PasswordInput from "../components/Inputs/PasswordInput";
 import ImgInput from "../components/Inputs/ImgInput";
 import "./auth.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Signup() {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ function Signup() {
   let [img, setImg] = useState("");
   let [err, setErr] = useState("");
   let [loding, setLoding] = useState(false);
+  let navigate = useNavigate();
   let getName = (text) => {
     setName(text);
   };
@@ -61,6 +63,9 @@ function Signup() {
         );
         setLoding(false);
         setErr(data.data === "data added" ? "" : data.data);
+        if (err !== "") {
+          navigate("/signin");
+        }
       } catch (error) {}
     }
   };
