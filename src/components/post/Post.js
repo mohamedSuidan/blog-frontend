@@ -31,7 +31,7 @@ function Post(props) {
         let arr = post.map((ele) => {
           if (ele._id === id) {
             let filter = ele.likes.filter((ele) => {
-              return ele.userId !== JSON.parse(localStorage.getItem("user")).id;
+              return ele !== JSON.parse(localStorage.getItem("user")).id;
             });
             console.log(filter);
             ele.likes = filter;
@@ -55,10 +55,7 @@ function Post(props) {
       } else {
         let arr = post.map((ele) => {
           if (ele._id === id) {
-            ele.likes.push({
-              userId: JSON.parse(localStorage.getItem("user")).id,
-              postId: id,
-            });
+            ele.likes.push(JSON.parse(localStorage.getItem("user")).id);
           }
           return ele;
         });
