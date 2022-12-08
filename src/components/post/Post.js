@@ -147,7 +147,7 @@ function Post(props) {
                         data-bool={
                           ele.likes.find(
                             (ele) =>
-                              ele.userId ===
+                              ele ===
                               JSON.parse(localStorage.getItem("user")).id
                           )
                             ? "true"
@@ -157,14 +157,13 @@ function Post(props) {
                       >
                         {ele.likes.find(
                           (ele) =>
-                            ele.userId ===
-                            JSON.parse(localStorage.getItem("user")).id
+                            ele === JSON.parse(localStorage.getItem("user")).id
                         ) ? (
                           <AiFillLike
                             data-bool={
                               ele.likes.find(
                                 (ele) =>
-                                  ele.userId ===
+                                  ele ===
                                   JSON.parse(localStorage.getItem("user")).id
                               )
                                 ? "true"
@@ -177,7 +176,7 @@ function Post(props) {
                             data-bool={
                               ele.likes.find(
                                 (ele) =>
-                                  ele.userId ===
+                                  ele ===
                                   JSON.parse(localStorage.getItem("user")).id
                               )
                                 ? "true"
@@ -191,7 +190,7 @@ function Post(props) {
                           data-bool={
                             ele.likes.find(
                               (ele) =>
-                                ele.userId ===
+                                ele ===
                                 JSON.parse(localStorage.getItem("user")).id
                             )
                               ? "true"
