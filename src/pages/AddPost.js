@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Navbars from "../components/Navbar/Navbar";
 import "./add-post.css";
@@ -10,7 +10,7 @@ function AddPost() {
   let [category, setCategory] = useState("");
   let [text, setText] = useState("");
   let [img, setImg] = useState("");
-  let [err, setErr] = useState("");
+  let [msg, setMsg] = useState("");
   let navigate = useNavigate();
   let addPost = async () => {
     if (title === "") {
@@ -36,6 +36,7 @@ function AddPost() {
         bool ? JSON.parse(localStorage.getItem("user")).name : ""
       );
       formData.append("img", img);
+      setMsg("wait post is uploading");
       await axios.post(
         "https://blog-api-ufp5.onrender.com/add-post",
         formData,
@@ -53,6 +54,7 @@ function AddPost() {
   return (
     <>
       <Navbars />
+      {msg !== "" ? <Alert variant="primary mt-5">{msg}</Alert> : ""}
       <Form>
         <Container className="mt-5">
           <h2 className="mb-2 text-center">Add Post</h2>
