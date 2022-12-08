@@ -226,7 +226,9 @@ function Post(props) {
           </Row>
         )
       ) : (
-        ""
+        <div className="loding">
+          <Alert variant="primary">loding</Alert>
+        </div>
       )}
 
       {props.noPagination ? (
