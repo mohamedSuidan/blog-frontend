@@ -40,7 +40,7 @@ function Post(props) {
         });
         setPost(arr);
         await axios.post(
-          "http://localhost:4000/add-like",
+          "https://blog-api-ufp5.onrender.com/add-like",
           {
             postId: id,
             userId: JSON.parse(localStorage.getItem("user")).id,
@@ -64,7 +64,7 @@ function Post(props) {
         });
         setPost(arr);
         await axios.post(
-          "http://localhost:4000/add-like",
+          "https://blog-api-ufp5.onrender.com/add-like",
           {
             postId: id,
             userId: JSON.parse(localStorage.getItem("user")).id,
@@ -92,7 +92,7 @@ function Post(props) {
   let pagination = async (e) => {
     let page = +e.target.dataset.page + 1;
     setActive(+e.target.dataset.page);
-    let post = await axios.get("http://localhost:4000/posts", {
+    let post = await axios.get("https://blog-api-ufp5.onrender.com/posts", {
       params: {
         limit: limit,
         page: page,
@@ -109,7 +109,9 @@ function Post(props) {
                 <Col lg={limit === 3 ? 4 : 6} key={ele._id}>
                   <div className="the-card">
                     <div className="img">
-                      <img src={`http://localhost:4000/${ele.img}`} />
+                      <img
+                        src={`https://blog-api-ufp5.onrender.com/${ele.img}`}
+                      />
                     </div>
                     <div className="text">
                       <div className="category">{ele.category}</div>

@@ -13,7 +13,7 @@ function PostDetales() {
     let postById = async () => {
       setPost(
         await (
-          await axios.get(`http://localhost:4000/post/${id}`)
+          await axios.get(`https://blog-api-ufp5.onrender.com/post/${id}`)
         ).data.post
       );
       setLoding(false);
@@ -30,7 +30,7 @@ function PostDetales() {
             <Row>
               <Col lg={12}>
                 <div className="det-img">
-                  <img src={`http://localhost:4000/${post.img}`} />
+                  <img src={`https://blog-api-ufp5.onrender.com/${post.img}`} />
                 </div>
               </Col>
               <Col lg={12}>

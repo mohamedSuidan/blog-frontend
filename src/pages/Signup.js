@@ -50,11 +50,15 @@ function Signup() {
         formData.append("gander", gander);
         formData.append("img", img);
         setLoding(true);
-        let data = await axios.post("http://localhost:4000/signup", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        let data = await axios.post(
+          "https://blog-api-ufp5.onrender.com/signup",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
         setLoding(false);
         setErr(data.data === "data added" ? "" : data.data);
       } catch (error) {}

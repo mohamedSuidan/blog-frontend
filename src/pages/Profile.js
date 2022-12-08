@@ -24,7 +24,9 @@ function Profile() {
   useEffect(() => {
     let getAll = async () => {
       setLoding(true);
-      let data = await axios.get(`http://localhost:4000/profile/${id}`);
+      let data = await axios.get(
+        `https://blog-api-ufp5.onrender.com/profile/${id}`
+      );
       setLoding(false);
       setUser(data.data.user);
       // setPost(data.data.posts);
@@ -49,7 +51,7 @@ function Profile() {
 
       setUser(JSON.parse(userStr));
       await axios.post(
-        "http://localhost:4000/add-follow",
+        "https://blog-api-ufp5.onrender.com/add-follow",
         {
           followAdded: JSON.parse(localStorage.getItem("user")).id,
           takeFollow: id,
@@ -73,7 +75,7 @@ function Profile() {
             <Col lg={4}>
               <div className="user">
                 <div className="profile-img">
-                  <img src={`http://localhost:4000/${user.img}`} />
+                  <img src={`https://blog-api-ufp5.onrender.com/${user.img}`} />
                 </div>
                 <div className="profile-name">
                   <h3 className="name">{user.name}</h3>
@@ -133,7 +135,10 @@ function Profile() {
             </Col>
             <Col lg={8}>
               <Row className="mt-5">
-                <Post link={`http://localhost:4000/profile/${id}`} limit={2} />
+                <Post
+                  link={`https://blog-api-ufp5.onrender.com/profile/${id}`}
+                  limit={2}
+                />
               </Row>
             </Col>
           </Row>

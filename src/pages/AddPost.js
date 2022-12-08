@@ -36,13 +36,17 @@ function AddPost() {
         bool ? JSON.parse(localStorage.getItem("user")).name : ""
       );
       formData.append("img", img);
-      await axios.post("http://localhost:4000/add-post", formData, {
-        headers: {
-          Authorization: bool
-            ? JSON.parse(localStorage.getItem("user")).token
-            : "",
-        },
-      });
+      await axios.post(
+        "https://blog-api-ufp5.onrender.com/add-post",
+        formData,
+        {
+          headers: {
+            Authorization: bool
+              ? JSON.parse(localStorage.getItem("user")).token
+              : "",
+          },
+        }
+      );
       navigate("/");
     }
   };

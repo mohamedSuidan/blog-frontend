@@ -7,7 +7,7 @@ function Home() {
     <div className="home">
       <Navbars />
       <Container>
-        <Post link="http://localhost:4000/posts" limit={3} />
+        <Post link="https://blog-api-ufp5.onrender.com/posts" limit={3} />
       </Container>
     </div>
   );
