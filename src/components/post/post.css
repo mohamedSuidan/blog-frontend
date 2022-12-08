@@ -1,0 +1,86 @@
+.img img {
+  width: 100%;
+  height: 200px;
+}
+.the-card {
+  background-color: white;
+  overflow: hidden;
+  margin-top: 21px;
+  border-radius: 7px;
+}
+.the-card .text {
+  padding: 18px;
+}
+.the-card .text .category {
+  text-transform: capitalize;
+  font-size: 20px;
+  margin-top: 3px;
+  margin-bottom: 9px;
+}
+.the-card .text .title {
+  font-size: 25px;
+}
+.the-card .text .title a {
+  text-decoration: none;
+  color: #333;
+}
+.the-card p {
+  line-height: 1.8;
+  color: #777;
+  font-size: 17px;
+  margin-bottom: -10px;
+}
+.auther {
+  display: flex;
+}
+.end .auther .img-auther img {
+  position: relative;
+  top: -7px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.auther .name a {
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  padding: 10px;
+}
+.end {
+  display: flex;
+  padding: 5px 22px;
+  justify-content: space-between;
+}
+.end .auther .name {
+  margin-top: 5px;
+}
+hr {
+  margin: 10px;
+}
+.end svg {
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+  left: -14px;
+  cursor: pointer;
+}
+.likes {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+.pagination {
+  width: 11%;
+  margin-top: 22px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.like-link {
+  display: block;
+}
+.like-link .like-svg {
+  font-size: 25px;
+  margin-left: 160px;
+  margin-top: 6px;
+  cursor: pointer;
+  color: #333;
+}

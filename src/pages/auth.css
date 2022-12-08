@@ -1,0 +1,27 @@
+body {
+  background-color: #f4f4f4 !important;
+}
+
+.sign {
+  background-color: white;
+  padding: 14px 23px;
+  min-height: 27vh;
+  width: 50%;
+  margin-left: auto;
+  border-radius: 10px;
+  margin-right: auto;
+}
+h1 {
+  margin-bottom: 40px !important;
+  margin-top: 60px !important;
+  color: #999;
+  text-align: center;
+}
+h3 {
+  padding: 12px 20px !important;
+  margin-bottom: 30px !important;
+  margin-top: 30px !important;
+  font-weight: 300 !important;
+  font-size: 30px !important;
+  text-align: center;
+}

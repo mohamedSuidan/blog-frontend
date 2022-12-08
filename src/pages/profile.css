@@ -1,0 +1,39 @@
+.user {
+  background-color: white;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 65px;
+}
+.user .profile-img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+}
+
+.user .profile-img img {
+  width: 250px;
+  height: 250px;
+  padding: 25px;
+  border-radius: 50%;
+}
+.user .name {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.follow-btn {
+  text-align: center;
+}
+.follow-btn .btn {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.follow-detal {
+  text-align: center;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.form-control:disabled {
+  background-color: #fff;
+  opacity: 1;
+}
