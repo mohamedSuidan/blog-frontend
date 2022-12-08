@@ -63,7 +63,7 @@ function Signup() {
         );
         setLoding(false);
         setErr(data.data === "data added" ? "" : data.data);
-        if (err !== "") {
+        if (err === "") {
           navigate("/signin");
         }
       } catch (error) {}

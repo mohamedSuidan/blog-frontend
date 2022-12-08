@@ -35,18 +35,19 @@ function Profile() {
   }, [id]);
   let addFollow = async () => {
     if (bool) {
-      if (user.followers.length === 0) {
-        user.followers.push(JSON.parse(localStorage.getItem("user")).id);
-      } else {
-        let filter = user.followers.filter((ele) => {
+      if (
+        user.followers.includes(JSON.parse(localStorage.getItem("user")).id)
+      ) {
+        user.followers.filter((ele) => {
           return ele !== JSON.parse(localStorage.getItem("user")).id;
         });
-        user.followers = filter;
+      } else {
+        user.followers.push(JSON.parse(localStorage.getItem("user")).id);
       }
+
       let arr = user.followers.map((ele) => {
         return ele;
       });
-      console.log(arr);
       let userStr = JSON.stringify(user);
 
       setUser(JSON.parse(userStr));
