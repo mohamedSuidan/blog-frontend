@@ -38,9 +38,10 @@ function Profile() {
       if (
         user.followers.includes(JSON.parse(localStorage.getItem("user")).id)
       ) {
-        user.followers.filter((ele) => {
+        let arr = user.followers.filter((ele) => {
           return ele !== JSON.parse(localStorage.getItem("user")).id;
         });
+        user.followers = arr;
       } else {
         user.followers.push(JSON.parse(localStorage.getItem("user")).id);
       }
